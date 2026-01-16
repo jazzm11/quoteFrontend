@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+    <%- include('partials/nav') %>
+        <div class="container">
+            <% if (data) { %>
+                <h1 class="title">
+                    <%= søkBrukernavn %>'s Quotes
+                </h1>
+                <div class="quotes-list-container">
+                    <% if (data.length > 0) { %>
+                        <ol class="quotes-list">
+                            <% data.forEach(function(quote) { %>
+                                <li class="quote-item">
+                                    <%= quote.quotes %>
+                                </li>
+                                <% }); %>
+                        </ol>
+
+                        <% } else { %>
+                            <p>No quotes available at the moment.</p>
+                            <% } %>
+                </div>
+                <% } else { %>
+                    <h1 class="title">No quotes found for this user.</h1>
+                    <% } %>
+        </div>
+
+        <%- include('partials/footer') %>

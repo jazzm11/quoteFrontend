@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+    <%- include('partials/nav') %>
+        <div class="container">
+            <h1 class="title">Publish Your Quotes</h1>
+            <form action="/lagresitater" method="POST" class="quotes-form">
+                <div class="form-group">
+                    <label for="quotes">Your Quote:</label>
+                    <textarea id="quotes" name="quotes" class="form-control" placeholder="Write your quote here..."
+                        required></textarea>
+                    <button type="submit" class="btn btn-primary">Publish</button>
+                </div>
+                
+                <!-- Display error message -->
+                <% if (error) { %>
+                    <p style="color:red; margin-top:10px;">
+                        <%= error %>
+                    </p>
+                    <% } %>
+            </form>
+
+            <div class="users-quote">
+                <h2 class="subtitle">Your Published Quotes</h2>
+                <% if (data) { %>
+                    <ol class="quotes-list">
+                        <% data.forEach(function(quote) { %>
+                            <li class="quote-item">
+                                <form action="/lagresitater/edit/<%= quote._id %>" method="POST" class="quote-form">
+                                    <input type="text" name="newQuotes" value="<%= quote.quotes %>">
+                                    <button type="submit" class="btn btn-secondary">RePublish</button>
+                                </form>
+                                <form action="/lagresitater/delete/<%= quote._id %>" method="POST" class="quote-form-2">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </li>
+                        <% }); %>
+                    </ol>
+                <% } else { %>
+                    <p>You have not published any quotes yet.</p>
+                <% } %>
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>

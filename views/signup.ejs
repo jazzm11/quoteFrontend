@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+    <form action="/signup" method="POST" class="signup-form">
+        <h1>Register Bruker</h1>
+        <div class="form-group">
+            <label for="brukernavn">Brukernavn:</label>
+            <input type="text" id="brukernavn" name="brukernavn" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="passord">Passord:</label>
+            <input type="password" id="passord" name="passord" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="repeatPassord">Gjeneta Passord:</label>
+            <input type="password" id="repeatPassord" name="repeatPassord" required class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <a href="/signin" class="btn btn-link">sign in?</a>
+
+        <!-- Display error message -->
+        <% if (error) { %>
+            <p style="color:red; margin-top:10px;">
+                <%= error %>
+            </p>
+            <% } %>
+    </form>
+    <%- include('partials/footer') %>

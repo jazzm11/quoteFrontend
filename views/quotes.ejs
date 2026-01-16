@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+    <%- include('partials/nav') %>
+        <div class="container">
+            <h1 class="title">Quotes</h1>
+            <p class="description">Welcome to the Quotes Page - Here are some quotes:</p>
+            <div class="quotes-list-container">
+                <% if (data && data.length > 0) { %>
+                    <ol class="quotes-list">
+                        <% data.forEach(function(quote) { %>
+                            <li class="quote-item">
+                                <%= quote.quotes %> 
+                                <br>
+
+                                <em>Author: <%= quote.brukernavn %></em>
+                            </li>
+                        <% }); %>
+                    </ol>
+                <% } else { %>
+                    <p>No quotes available at the moment.</p>
+                <% } %>
+                <%- include('partials/footer') %>
+            </div>
+        </div>
+
+    

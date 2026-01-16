@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+
+    <%- include('partials/nav') %>
+        <div class="container">
+            <h1 class="title">Quotes App</h1>
+            <p class="description">Welcome to the Quotes App - Home Page</p>
+
+            <div class="quote-section">
+                <% if (data) { %>
+                    <div class="quote-item" id="random-quote">
+                        <p>"<%= data.quotes %>"</p>
+                        <em>- <%= data.brukernavn %></em>
+                    </div>
+                <% } else { %>
+                    <p>No quotes available at the moment.</p>
+                <% } %>
+            </div>
+        </div>
+
+    <%- include('partials/footer') %>
