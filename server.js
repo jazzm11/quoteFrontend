@@ -1,10 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const app = express();
 const port = 4000;
 require("dotenv").config();
+
+
 
 // Authentication Middleware
 const auth = require("./middleware/auth");
@@ -17,6 +20,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "public")));
 
 // Session middleware
 app.use(
